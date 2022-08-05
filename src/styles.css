@@ -1,0 +1,108 @@
+html {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-size: 10px;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: lighter;
+}
+@font-face {
+  font-family: ComfortaaLight;
+  src: url("./images/Comfortaa-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.login--page {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.login--title {
+  font-size: 20vw;
+  text-align: center;
+  color: rgba(255, 255, 255, 75%);
+  text-shadow: 0px 0px 25px rgba(255, 255, 255, 50%);
+  margin-top: 15vh;
+  margin-bottom: 5vh;
+}
+
+.login--button,
+.input--box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(245, 245, 245, 71%);
+}
+.input--box {
+  z-index: 5;
+  border-radius: 25px;
+  border: rgba(225, 225, 225, 0.8);
+  box-shadow: 0px 0px 20px 3px rgba(225, 225, 225, 0.8);
+  margin-inline: auto;
+  width: 80vw;
+  height: 35vh;
+}
+input {
+  border-radius: 5px;
+  margin-top: 5px;
+  width: 65vw;
+  height: 5vh;
+  outline: none;
+  border: none;
+}
+.account--image {
+  height: 5vh;
+  width: 5vh;
+  display: block;
+  margin-left: auto;
+  margin-right: 20vw;
+  margin-bottom: -0.2vh;
+}
+.login--button {
+  z-index: 1;
+  background-color: rgba(245, 245, 245, 71%);
+  border: rgba(225, 225, 225, 0.8);
+  border-radius: 0px 0px 15px 15px;
+  box-shadow: 0px 10px 20px 8px rgba(225, 225, 225, 0.8);
+  margin-inline: auto;
+  border: none;
+  width: 65vw;
+  height: 5vh;
+  font-family: ComfortaaLight;
+  color: rgba(0, 0, 0, 75%);
+  font-weight: bold;
+  font-size: 5vw;
+}
+
+.login--button--top--fade {
+  display: fixed;
+  width: 65vw;
+  height: 1vh;
+  margin-inline: auto;
+  background: linear-gradient(
+    rgba(245, 245, 245, 10%),
+    rgba(245, 245, 245, 85%)
+  );
+}
+
+.login--button:hover {
+  cursor: pointer;
+}
+.login--button:active {
+  box-shadow: 0px 10px 20px 8px rgba(225, 225, 225, 0.5);
+  border-radius: 0px 0px 25px 25px;
+}
+input:invalid {
+  border: 2px solid red;
+}
