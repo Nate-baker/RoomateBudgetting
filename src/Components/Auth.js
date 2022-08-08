@@ -1,7 +1,7 @@
 import { addUserToDB } from "./Database";
 //Import firebase info
 import { initializeApp } from "firebase/app";
-import { getAnalytics, setUserId } from "firebase/analytics";
+import { getAnalytics } from "firebase/analytics";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -40,7 +40,10 @@ export function createUser({ email, password }, setUser) {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user);
+      const uid = user.uid;
+
+      //Add user to the database
+      addUserToDB({ password: password, email: email, uid: uid });
 
       //Update App state to change "page"
       setUser({
@@ -66,7 +69,6 @@ export function signIn({ email, password }, setUser) {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user);
 
       //Update App state to change "page"
       setUser({
@@ -82,7 +84,7 @@ export function signIn({ email, password }, setUser) {
 
       //If we failed due to user not existing.... create the damn user
       if (errorCode === "auth/user-not-found") {
-        createUser({ email: email, password: password });
+        createUser({ email: email, password: password }, setUser);
       }
     });
 }

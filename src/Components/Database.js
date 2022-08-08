@@ -40,14 +40,9 @@ function getDBData(path) {
   return val;
 }
 
-export function addUserToDB(userData, UID) {
-  const username = userData.username;
-  const email = userData.email;
-  const password = userData.password;
-
-  writeDBData(`users/${username}`, {
+export function addUserToDB({ password, email, uid }) {
+  writeDBData(`users/${uid}`, {
     email: email,
-    UID: UID,
     password: password
   });
 }
