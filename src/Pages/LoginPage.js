@@ -4,6 +4,7 @@ import { signIn } from "../Components/Auth";
 export default function LoginPage({ setUser }) {
   //Tracks email and password
   const [loginInfo, setLoginInfo] = React.useState();
+  const [errorBox, setErrorBox] = React.useState();
 
   //Updates state with corresponsing {email} or {password} from input boxes
   const updateState = (fromElement) => {
@@ -11,11 +12,18 @@ export default function LoginPage({ setUser }) {
       ...loginInfo,
       [fromElement.target.id]: fromElement.target.value
     });
+    setErrorBox();
   };
 
   //Handle Login button press and try to AUTH user
   const login = () => {
-    signIn(loginInfo, setUser);
+    if (loginInfo && loginInfo.email && loginInfo.password)
+      signIn(loginInfo, setUser);
+    else {
+      setErrorBox(
+        <h3 className="errorBox">Please input a valid email and password</h3>
+      );
+    }
   };
 
   return (
@@ -29,6 +37,7 @@ export default function LoginPage({ setUser }) {
         width="25px"
       ></img>
       <div className="input--box">
+        {errorBox}
         <input
           id="email"
           className="email-input"
