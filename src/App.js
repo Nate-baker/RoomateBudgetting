@@ -2,6 +2,7 @@ import React from "react";
 import { Component } from "react";
 import "./styles.css";
 import LoginPage from "./Pages/LoginPage";
+import Dashboard from "./Pages/Dashboard";
 
 export default function App() {
   const [user, setUser] = React.useState();
@@ -12,7 +13,6 @@ export default function App() {
   }
   //If we have logged in, set page dashboard
   else {
-    return <h1>Hello {user.email}</h1>;
-    //return <Dashboard />
+    return <Dashboard user={user} />;
   }
 }
