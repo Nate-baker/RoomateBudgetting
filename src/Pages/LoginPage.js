@@ -1,7 +1,7 @@
 import React from "react";
 import { signIn } from "../Components/Auth";
 
-export default function LoginPage({ setUser }) {
+export default function LoginPage({ setUser, setPage }) {
   //Tracks email and password
   const [loginInfo, setLoginInfo] = React.useState();
   const [errorBox, setErrorBox] = React.useState();
