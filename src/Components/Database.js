@@ -23,26 +23,46 @@ function writeDBData(path, data) {
 }
 
 function getDBData(path) {
-  const dbRef = ref(getDatabase());
-  let val;
-  get(child(dbRef, path))
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        console.log(snapshot.val());
-        val = snapshot.val();
-      } else {
-        val = null;
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  return val;
+  return new Promise((resolve, reject) => {
+    const dbRef = ref(getDatabase());
+
+    get(child(dbRef, path))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          //console.log(snapshot.val());
+          resolve(snapshot.val());
+        } else {
+          reject("Something went wrong");
+        }
+      })
+      .catch((error) => {
+        reject(error);
+        console.error(error);
+      });
+  });
 }
 
-export function addUserToDB({ password, email, uid }) {
+function addUserToDB({ password, email, uid }) {
   writeDBData(`users/${uid}`, {
+    uid: uid,
     email: email,
     password: password
   });
 }
+
+function getUser(uid) {
+  return getDBData(`users/${uid}`);
+}
+
+function addBill(uid, bill) {
+  writeDBData(`users/${uid}/Bills/${bill.name}`, bill);
+}
+
+function getBills(uid) {
+  return getDBData(`users/${uid}/Bills`);
+}
+
+module.exports.addUserToDB = addUserToDB;
+module.exports.getUser = getUser;
+module.exports.addBill = addBill;
+module.exports.getBills = getBills;

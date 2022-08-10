@@ -47,6 +47,7 @@ export function createUser({ email, password }, setUser) {
 
       //Update App state to change "page"
       setUser({
+        uid: uid,
         email: email,
         password: password
       });
@@ -72,6 +73,7 @@ export function signIn({ email, password }, setUser) {
 
       //Update App state to change "page"
       setUser({
+        uid: user.uid,
         email: email,
         password: password
       });
