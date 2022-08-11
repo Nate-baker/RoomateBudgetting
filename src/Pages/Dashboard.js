@@ -2,17 +2,17 @@ import Personal from "./Personal";
 import Group from "./Group";
 import AllBills from "./AllBills";
 
-export default function Dashboard({ user, setPage }) {
+export default function Dashboard({ uid, setPage }) {
   function changePage({ target: { id } }) {
     switch (id) {
       case "personal":
-        setPage(<Personal uid={user.uid} />);
+        setPage(<Personal uid={uid} />);
         break;
       case "group":
-        setPage(<Group uid={user.uid} />);
+        setPage(<Group uid={uid} />);
         break;
       case "bills":
-        setPage(<AllBills uid={user.uid} />);
+        setPage(<AllBills uid={uid} />);
         break;
       default:
         console.log("how'd you get here??");

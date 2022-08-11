@@ -136,6 +136,53 @@ input:invalid {
   }
 }
 
+.app-container {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0%);
+}
+.nav-button {
+  z-index: 12;
+  border: none;
+  position: fixed;
+  top: 2px;
+  left: 2px;
+  font-size: 6vmin;
+  background-color: rgba(200, 225, 245, 100%);
+}
+.navbar {
+  background-color: rgba(200, 225, 245, 100%);
+  box-shadow: 0px 0px 2px 3px rgba(200, 225, 245, 80%);
+  width: max-content;
+  padding-right: 4vmin;
+  position: fixed;
+  top: 3px;
+  left: 3px;
+  z-index: 11;
+}
+.navbar > ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4vh;
+  margin-left: 0px;
+  list-style: none;
+  padding-left: 2vmin;
+}
+.navbar > ul > li > button {
+  text-align: center;
+  font-size: 6vmin;
+  padding: 4px;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  margin-top: 4px;
+  padding: 1px;
+}
+.navbar > ul > li > button:hover {
+  cursor: pointer;
+}
 .buttons {
   display: flex;
   position: absolute;
@@ -176,7 +223,8 @@ input:invalid {
 }
 
 .personal--bills--header {
-  margin-top: 2vh;
+  margin-top: 3vh;
+  margin-left: 5vw;
   display: flex;
   flex-direction: row;
   font-size: 3vmin;
